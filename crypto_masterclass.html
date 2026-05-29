@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MASTERCLASS CRYPTO - KELAS 1</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                            950: '#0b0a16',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar untuk performa visual premium */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090d16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7c3aed;
+        }
+        
+        /* Efek glow halus */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .glow-violet {
+            box-shadow: 0 0 25px -5px rgba(124, 58, 237, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col antialiased selection:bg-brand-600 selection:text-white">
+
+    <!-- HEADER UTAMA -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-slate-900 px-4 py-3 md:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            
+            <!-- Logo & Brand -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-brand-500/20">
+                    <i data-lucide="trending-up" class="w-5 h-5 text-white"></i>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-base md:text-lg tracking-tight bg-gradient-to-r from-white via-slate-100 to-brand-400 bg-clip-text text-transparent">
+                        MASTERCLASS CRYPTO
+                    </h1>
+                    <p class="text-xs text-slate-400 font-medium tracking-wider">KELAS 1 • LEVEL PROFESSIONAL</p>
+                </div>
+            </div>
+
+            <!-- Progres Belajar Real-Time -->
+            <div class="flex-1 max-w-md w-full px-2 md:px-6">
+                <div class="flex justify-between text-xs mb-1.5">
+                    <span class="text-slate-400 flex items-center gap-1.5">
+                        <i data-lucide="award" class="w-3.5 h-3.5 text-brand-400"></i>
+                        Progres Kelas Anda
+                    </span>
+                    <span id="progress-percent" class="font-semibold text-brand-400">0% Selesai</span>
+                </div>
+                <div class="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden border border-slate-800/80 p-[1px]">
+                    <div id="progress-bar" class="bg-gradient-to-r from-brand-600 via-indigo-500 to-cyan-400 h-full rounded-full transition-all duration-700 ease-out shadow-[0_0_12px_rgba(124,58,237,0.4)]" style="width: 0%"></div>
+                </div>
+                <div class="flex justify-between text-[10px] text-slate-500 mt-1">
+                    <span id="progress-count">0 / 0 Materi Terbaca</span>
+                    <span id="milestone-badge" class="font-semibold text-slate-400">Mulai Belajar</span>
+                </div>
+            </div>
+
+            <!-- Profil User Singkat -->
+            <div class="flex items-center gap-3 border-l border-slate-800/80 pl-4 hidden md:flex">
+                <div class="text-right">
+                    <p class="text-xs font-bold text-slate-200">Crypto Scholar</p>
+                    <span class="text-[10px] text-emerald-400 font-medium flex items-center justify-end gap-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Member VIP
+                    </span>
+                </div>
+                <div class="w-9 h-9 rounded-full bg-slate-800 border border-brand-500/30 flex items-center justify-center overflow-hidden">
+                    <div class="text-xs font-bold text-slate-300">CS</div>
+                </div>
+            </div>
+            
+        </div>
+    </header>
+
+    <!-- MOBILE CURRICULUM FLOATING TOGGLE -->
+    <div class="lg:hidden bg-slate-900 border-b border-slate-800 px-4 py-2.5 flex items-center justify-between text-sm sticky top-[65px] z-30">
+        <button id="mobile-sidebar-toggle" class="flex items-center gap-2 bg-slate-800 px-3.5 py-1.5 rounded-lg text-slate-200 hover:text-white border border-slate-700 transition">
+            <i data-lucide="menu" class="w-4 h-4 text-brand-400"></i>
+            <span>Daftar Modul & Materi</span>
+        </button>
+        <span id="active-category-indicator" class="text-xs text-brand-400 font-semibold truncate max-w-[200px]">
+            Membuka Kelas...
+        </span>
+    </div>
+
+    <!-- MAIN CONTAINER (Split Screen) -->
+    <main class="flex-1 max-w-7xl w-full mx-auto flex flex-col lg:flex-row relative">
+
+        <!-- Sisi Kiri: Sidebar Navigasi Modul -->
+        <aside id="sidebar" class="w-full lg:w-96 flex-shrink-0 border-r border-slate-900 bg-slate-950/80 lg:block hidden fixed lg:sticky top-[108px] bottom-0 z-20 overflow-y-auto max-h-[calc(100vh-108px)]">
+            <div class="p-4 space-y-4">
+                
+                <!-- Pencarian Materi -->
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i data-lucide="search" class="w-4 h-4 text-slate-500"></i>
+                    </span>
+                    <input type="text" id="search-input" placeholder="Cari materi kelas..." class="w-full bg-slate-900 border border-slate-800 rounded-xl py-2 pl-9 pr-4 text-xs text-slate-300 placeholder-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition">
+                </div>
+
+                <!-- Modul Wrapper (Konten Accordion akan dirender lewat JS) -->
+                <div id="modules-container" class="space-y-3">
+                    <!-- Dinamis terisi oleh javascript -->
+                </div>
+
+            </div>
+        </aside>
+
+        <!-- Sisi Kanan: Video Player & Deskripsi Workspace -->
+        <section class="flex-1 p-4 md:p-6 lg:p-8 space-y-6 overflow-x-hidden">
+            
+            <!-- Video Player Card -->
+            <div class="bg-slate-900 rounded-2xl border border-slate-800/80 overflow-hidden shadow-2xl glow-violet transition duration-500">
+                
+                <!-- Video Container (16:9 Aspect Ratio) -->
+                <div class="relative w-full aspect-video bg-black group">
+                    <iframe id="main-video-iframe" class="absolute inset-0 w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+
+                <!-- Video Meta & Action Controls -->
+                <div class="p-5 md:p-6 border-t border-slate-800/80 bg-slate-900/60">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div>
+                            <span id="active-category" class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-brand-500/10 text-brand-400 border border-brand-500/20 uppercase tracking-wider mb-2">
+                                Modul Belajar
+                            </span>
+                            <h2 id="active-video-title" class="text-lg md:text-xl font-extrabold text-slate-50 hover:text-brand-300 transition duration-300">
+                                Memuat Judul Kelas...
+                            </h2>
+                        </div>
+
+                        <!-- Button Selesai & Lanjutkan -->
+                        <div>
+                            <button id="btn-complete" class="w-full md:w-auto bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold text-xs px-6 py-3.5 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-brand-600/25 transition duration-300 transform active:scale-95">
+                                <i data-lucide="check-circle" class="w-4.5 h-4.5"></i>
+                                <span id="btn-complete-text">Tandai Selesai & Lanjutkan</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Deskripsi, Informasi Tambahan & Catatan -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Bagian Kiri Grid: Deskripsi / Key Takeaways -->
+                <div class="md:col-span-2 space-y-6">
+                    <div class="bg-slate-900/40 rounded-xl p-5 md:p-6 border border-slate-900 space-y-4">
+                        <div class="flex items-center gap-2 pb-3 border-b border-slate-800/80">
+                            <i data-lucide="book-open" class="w-5 h-5 text-brand-400"></i>
+                            <h3 class="font-bold text-sm text-slate-200">Panduan & Catatan Akademik</h3>
+                        </div>
+                        <div class="text-xs md:text-sm text-slate-400 leading-relaxed space-y-3">
+                            <p>
+                                Selamat datang di portal pembelajaran premium eksklusif <strong>Masterclass Crypto - Kelas 1</strong>. Di sini Anda akan dibimbing secara radikal untuk menguasai pasar kripto mulai dari strategi manajemen risiko hingga analisis tingkat lanjut.
+                            </p>
+                            <p class="border-l-2 border-brand-500 pl-3 italic text-slate-300">
+                                Klik tombol <strong>"Tandai Selesai & Lanjutkan"</strong> setelah menyelesaikan video ini untuk menyimpan riwayat progres studi Anda secara permanen.
+                            </p>
+                            <div class="bg-slate-950/60 p-3 rounded-lg border border-slate-800/40 space-y-1 mt-4">
+                                <p class="text-slate-300 font-medium text-xs">Penting Untuk Diperhatikan:</p>
+                                <ul class="list-disc pl-4 space-y-1 text-slate-400 text-[11px]">
+                                    <li>Pelajari materi secara bertahap demi kebaikan alur logika berpikir Anda.</li>
+                                    <li>Praktikkan langsung lewat platform demo/buku jurnal pribadi selama menonton.</li>
+                                    <li>Semua data progres dan catatan pribadi Anda otomatis tersimpan pada peramban web ini.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian Kanan Grid: Catatan Pribadi (Notebook Integratif) -->
+                <div class="md:col-span-1 space-y-4">
+                    <div class="bg-slate-900/40 rounded-xl p-5 border border-slate-900 flex flex-col h-full space-y-3">
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-800/80">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="edit-3" class="w-4 h-4 text-brand-400"></i>
+                                <h3 class="font-bold text-xs text-slate-200">Buku Catatan Digital</h3>
+                            </div>
+                            <span class="text-[9px] bg-slate-800 px-1.5 py-0.5 rounded text-slate-400">Autosave</span>
+                        </div>
+                        <p class="text-[10px] text-slate-400 leading-relaxed">
+                            Tulis ringkasan, formula, atau poin penting untuk materi ini.
+                        </p>
+                        <textarea id="personal-notes" placeholder="Tulis catatan Anda di sini... (Catatan otomatis disimpan secara lokal)" class="w-full flex-1 min-h-[140px] bg-slate-950 border border-slate-800 rounded-lg p-3 text-xs text-slate-300 placeholder-slate-600 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition resize-none"></textarea>
+                        <div class="flex justify-between items-center pt-2">
+                            <span id="notes-status" class="text-[10px] text-slate-500">Belum ada perubahan</span>
+                            <button id="btn-clear-notes" class="text-[10px] text-red-400 hover:text-red-300 transition duration-200 flex items-center gap-1">
+                                <i data-lucide="trash-2" class="w-3 h-3"></i> Hapus Catatan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto border-t border-slate-950 bg-slate-950 py-6 text-center text-xs text-slate-500 px-4">
+        <p>© 2026 Crypto Masterclass. All rights reserved. Platform dirancang secara premium untuk kesuksesan akademik Anda.</p>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT SYSTEM -->
+    <script>
+        // DATA STRUKTUR UTAMA MODUL & MATERI (Tautan diubah menjadi format /preview)
+        const modulesData = [
+            {
+                id: "m1",
+                title: "MODUL 1: MONEY MANAGEMENT",
+                items: [
+                    { id: "m1-1", title: "Money Management", url: "https://drive.google.com/file/d/1NmoLSuMHjXKJLQyz-rWfi_N59UCtZ2-v/preview" }
+                ]
+            },
+            {
+                id: "m2",
+                title: "MODUL 2: CRYPTO INVESTING",
+                items: [
+                    { id: "m2-1", title: "Big Crypto Thesis", url: "https://drive.google.com/file/d/1rNVAqOm3JY-TZXYYhZ-QvH2h_UWVEPf6/preview" },
+                    { id: "m2-2", title: "Bitcoin a Ponzi Scheme", url: "https://drive.google.com/file/d/16RaCO6oEwE25ScFG6eLGW-SFQQdG3-Gb/preview" },
+                    { id: "m2-3", title: "Crypto Basic", url: "https://drive.google.com/file/d/1fWyMFpLd8SiTzd8BOynqB3JbLv_Z83PV/preview" },
+                    { id: "m2-4", title: "Mindset Crypto Gambler Mentality", url: "https://drive.google.com/file/d/1N_ekEioTRZ30XHtPAHn-sSa0-IG3j3k_/preview" },
+                    { id: "m2-5", title: "Market Cycle", url: "https://drive.google.com/file/d/1FF7ZH0-C_Ujt30noZCB6cqLBaI8llCKw/preview" },
+                    { id: "m2-6", title: "Crypto of Crypto Currency", url: "https://drive.google.com/file/d/1Q03SnY6Hs84Ud5mKfD9SKHA4lyav6bws/preview" },
+                    { id: "m2-7", title: "Attention Economy of Crypto", url: "https://drive.google.com/file/d/11HldtoCBEXo5EKRH3N8Xr6pECzarANcz/preview" },
+                    { id: "m2-8", title: "How to Research Crypto", url: "https://drive.google.com/file/d/1AfIv2okfTDbOz64TdJkvR9_DCoXfWwN1/preview" },
+                    { id: "m2-9", title: "Risk Portfolio Management", url: "https://drive.google.com/file/d/1pRxbwgYOpkZ1LMW9swNKtGtgDHhSa2in/preview" },
+                    { id: "m2-10", title: "NFT Fundamental", url: "https://drive.google.com/file/d/11GZqmFhtsABDzJAhWeBgRsudEWHhm6FI/preview" },
+                    { id: "m2-11", title: "Trade Probabilistic Thinking", url: "https://drive.google.com/file/d/1ML18I2C7uYzOT8FoB_iFR1y8WGsPeHet/preview" },
+                    { id: "m2-12", title: "Bitcoin Altcoin Correlation", url: "https://drive.google.com/file/d/1yYtRvWV4HoY9lCJCI3eVe1tjygNzOrwb/preview" },
+                    { id: "m2-13", title: "Crypto Tools", url: "https://drive.google.com/file/d/1mYF6vsOmFGxV680gG4KK60m634TX21xJ/preview" },
+                    { id: "m2-14", title: "Smart Money in Crypto", url: "https://drive.google.com/file/d/1LFXB0uiJHIhwH471PcW-hlzqvr6zewES/preview" },
+                    { id: "m2-15", title: "Portfolio Strategy", url: "https://drive.google.com/file/d/1fPCguxLXozZ1Ak2gQzAFzvRjAOcXMZz7/preview" },
+                    { id: "m2-16", title: "Crypto Staking", url: "https://drive.google.com/file/d/1Mmse_Mtnpj7SEZt1vPUxz6x5E39o45-w/preview" },
+                    { id: "m2-17", title: "Tutorial Exchange", url: "https://drive.google.com/file/d/1T_ZhWte_HDDIakyyU5A_THl279WhcTO1/preview" }
+                ]
+            },
+            {
+                id: "m3",
+                title: "MODUL 3: CRYPTO TRADING",
+                subsections: [
+                    {
+                        title: "Materi Teknikal Research",
+                        items: [
+                            { id: "m3-t1", title: "Trend Analysis", url: "https://drive.google.com/file/d/1NVBYfX8-x0rx7muUZAxwJGQn7Q-HTHky/preview" },
+                            { id: "m3-t2", title: "Cara Melakukan Area Analysis", url: "https://drive.google.com/file/d/1GD8QxbGmuDExOOBYUACfSOf1PA9sOdrD/preview" },
+                            { id: "m3-t3", title: "Pattern Analysis", url: "https://drive.google.com/file/d/1kKPAh-SXnDqdf_ZUSoNoRs7F6hqZ-e-B/preview" },
+                            { id: "m3-t4", title: "Trigger Analysis", url: "https://drive.google.com/file/d/1HCLO-jMk2aZTcBYYrrH3uw3-yWW_YxdL/preview" },
+                            { id: "m3-t5", title: "Entry Exit Analysis", url: "https://drive.google.com/file/d/1odZ83To5HItgT5vdn76MDCMZkFJPH90Q/preview" }
+                        ]
+                    },
+                    {
+                        title: "Materi Narrative Analysis Crypto Research",
+                        items: [
+                            { id: "m3-n1", title: "Intro to Narrative Research", url: "https://drive.google.com/file/d/1WAWE92b3Y38Hc78dxl4kRXU4Z-omsT0Y/preview" },
+                            { id: "m3-n2", title: "How to be Early Narrative", url: "https://drive.google.com/file/d/1g1dmWerRa3MHRIbqfyZPNOICI42sAp7k/preview" },
+                            { id: "m3-n3", title: "Portfolio Allocation", url: "https://drive.google.com/file/d/1oG9FUT3HXbGdIaz8w3JlJkg5GL-1NUBc/preview" },
+                            { id: "m3-n4", title: "Possible Narrative", url: "https://drive.google.com/file/d/1SJHBLmKYnsDJnuatqm_SLIrXnk5eto6a/preview" }
+                        ]
+                    },
+                    {
+                        title: "Materi Fundamental Analysis Research",
+                        items: [
+                            { id: "m3-f1", title: "Introduction Fundamental Analysis", url: "https://drive.google.com/file/d/1P_zpTmSp4cNeKbmIpoy4Ckf6ige3cSMg/preview" },
+                            { id: "m3-f2", title: "Faktor yang Berperan dalam Fundamental Research", url: "https://drive.google.com/file/d/1wpV4eXQATGwu5vXarUjbqTYMNFdjMSCF/preview" },
+                            { id: "m3-f3", title: "Mendalami Tokenomic Project", url: "https://drive.google.com/file/d/1hfNLWVbfMBPfYh0-FRTDN9nMRBuWnfuH/preview" }
+                        ]
+                    },
+                    {
+                        title: "Materi Altcoin Scalping",
+                        items: [
+                            { id: "m3-as1", title: "Pemahaman Dasar Mengenai Altcoin Crypto", url: "https://drive.google.com/file/d/15aMStk_WE8LzJNs75yEIx1Mfnn55-7fS/preview" },
+                            { id: "m3-as2", title: "Pemahaman Dasar Mengenai Teknik Scalping", url: "https://drive.google.com/file/d/1p2pclNpjfu7bO7Mr7C81UX-D2N_mYo3t/preview" },
+                            { id: "m3-as3", title: "Persiapan Mental Sebelum Melakukan Scalping", url: "https://drive.google.com/file/d/1Cox-qiZ9yU7NWUpFDsvr8QtjJ6kwEsjG/preview" },
+                            { id: "m3-as4", title: "Persiapan Teknikal Sebelum Melakukan Scalping", url: "https://drive.google.com/file/d/1HfrHovXUQsBs4_zIcr7Ywp5lzI_fe5IF/preview" },
+                            { id: "m3-as5", title: "Cara Melakukan Screening Untuk Altcoin", url: "https://drive.google.com/file/d/1tfe1hoOtyCcrjEdUsdPRjdnSzB4B0UCr/preview" }
+                        ]
+                    },
+                    {
+                        title: "Materi Onchain Trading",
+                        items: [
+                            { id: "m3-ot1", title: "Pengenalan Onchain Trading", url: "https://drive.google.com/file/d/1tjj8lN5_F_8oeh22X6ZmyBxRCTnoysgd/preview" },
+                            { id: "m3-ot2", title: "Menggali Decentralized Exchange", url: "https://drive.google.com/file/d/1L5V48BH2Vj5dXFHn_3wHkKt4gBqWW_Rb/preview" },
+                            { id: "m3-ot3", title: "Cara Menggunakan Wallet dan Exchange", url: "https://drive.google.com/file/d/11-0e52_9q_cCwLrxUOeqgu6aBfpeRX35/preview" },
+                            { id: "m3-ot4", title: "Tools Untuk Onchain Trading", url: "https://drive.google.com/file/d/15Iu2CnTs-Iy2FoafnWUGOY1MN-lGGRfX/preview" },
+                            { id: "m3-ot5", title: "Kesalahan yang Harus Dihindari Sebelum Transaksi Onchain", url: "https://drive.google.com/file/d/1UNcyIStz5Dhp6ShiqnPCo4Oha4w6M-j3/preview" }
+                        ]
+                    },
+                    {
+                        title: "Materi Dow Theory",
+                        items: [
+                            { id: "m3-dt1", title: "Pengenalan Dow Theory Crypto", url: "https://drive.google.com/file/d/1fgWMrz4mEiq6bkk5K67Mn_SGZ4yp6c8a/preview" },
+                            { id: "m3-dt2", title: "Memahami Konsep Trend dalam Theory", url: "https://drive.google.com/file/d/1IGvdocXMtqedQ-1tjDUUpGwKGqSQGFLR/preview" },
+                            { id: "m3-dt3", title: "Memahami Konsep Trend Lanjutan dalam Dow Theory", url: "https://drive.google.com/file/d/1m-kq02122bNzl0BD3BH6hhih70WsYPXg/preview" },
+                            { id: "m3-dt4", title: "Penguasaan Moving Average dan Validasi Dow", url: "https://drive.google.com/file/d/1rhmj7nnuY7IlMwGNCtt4sFvonZVnxSFe/preview" },
+                            { id: "m3-dt5", title: "Fase pada Dow Theory", url: "https://drive.google.com/file/d/1DdHq5d2uY7JlQB_W6Rdb3njh7Aq1ZjsH/preview" }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "m4",
+                title: "MODUL 4: KAMUS PATTERN CRYPTO",
+                isExternal: true,
+                url: "https://drive.google.com/drive/folders/1GW5LI95hcJspNit1l7b1sO1_1pxn2PI9?usp=drive_link"
+            },
+            {
+                id: "m5",
+                title: "MODUL 5: CRYPTO SMART MONEY",
+                isExternal: true,
+                url: "https://drive.google.com/drive/folders/1O1KtJxKcEGyXQF-Wf6bmsAPEJPjjVEAS?usp=drive_link"
+            }
+        ];
+
+        // STATE MANAGEMENT
+        let currentLessonId = "";
+        let completedLessons = [];
+        let accordionStates = {};
+        let notesData = {};
+        let totalPlayableLessons = 0;
+        let orderedPlayableLessons = []; // Array linier untuk next-previous
+
+        // SELEKTOR ELEMENT
+        const modulesContainer = document.getElementById("modules-container");
+        const videoIframe = document.getElementById("main-video-iframe");
+        const activeVideoTitle = document.getElementById("active-video-title");
+        const activeCategory = document.getElementById("active-category");
+        const activeCategoryIndicator = document.getElementById("active-category-indicator");
+        const btnComplete = document.getElementById("btn-complete");
+        const btnCompleteText = document.getElementById("btn-complete-text");
+        const progressPercent = document.getElementById("progress-percent");
+        const progressBar = document.getElementById("progress-bar");
+        const progressCount = document.getElementById("progress-count");
+        const milestoneBadge = document.getElementById("milestone-badge");
+        const searchInput = document.getElementById("search-input");
+        const textareaNotes = document.getElementById("personal-notes");
+        const notesStatus = document.getElementById("notes-status");
+        const btnClearNotes = document.getElementById("btn-clear-notes");
+        const sidebar = document.getElementById("sidebar");
+        const mobileSidebarToggle = document.getElementById("mobile-sidebar-toggle");
+
+        // INISIALISASI APLIKASI
+        function initApp() {
+            loadLocalStorage();
+            buildLinearLessons();
+            renderModules();
+            setupEventListeners();
+            
+            // Set default lesson pertama
+            if (orderedPlayableLessons.length > 0) {
+                const savedLastLesson = localStorage.getItem("last_active_lesson_id");
+                if (savedLastLesson && orderedPlayableLessons.find(l => l.id === savedLastLesson)) {
+                    selectLesson(savedLastLesson);
+                } else {
+                    selectLesson(orderedPlayableLessons[0].id);
+                }
+            }
+            updateProgress();
+        }
+
+        // LOAD DATA DARI STORAGE
+        function loadLocalStorage() {
+            try {
+                const storedCompleted = localStorage.getItem("completed_lessons");
+                if (storedCompleted) completedLessons = JSON.parse(storedCompleted);
+
+                const storedNotes = localStorage.getItem("lessons_notes");
+                if (storedNotes) notesData = JSON.parse(storedNotes);
+
+                const storedAccordions = localStorage.getItem("accordion_states");
+                if (storedAccordions) accordionStates = JSON.parse(storedAccordions);
+            } catch (e) {
+                console.error("Gagal memuat local storage", e);
+            }
+        }
+
+        // BIND STATE YANG TERSIMPAN KE STORAGE
+        function saveToStorage(key, data) {
+            localStorage.setItem(key, JSON.stringify(data));
+        }
+
+        // MEMBUAT FLAT ARRAY MATERI UNTUK NAVIGASI SELESAI & LANJUTKAN
+        function buildLinearLessons() {
+            orderedPlayableLessons = [];
+            modulesData.forEach(modul => {
+                if (modul.isExternal) return; // Lewati modul folder eksternal
+                
+                if (modul.items) {
+                    modul.items.forEach(item => {
+                        orderedPlayableLessons.push({
+                            id: item.id,
+                            title: item.title,
+                            url: item.url,
+                            moduleTitle: modul.title
+                        });
+                    });
+                } else if (modul.subsections) {
+                    modul.subsections.forEach(sub => {
+                        sub.items.forEach(item => {
+                            orderedPlayableLessons.push({
+                                id: item.id,
+                                title: item.title,
+                                url: item.url,
+                                moduleTitle: `${modul.title} - ${sub.title}`
+                            });
+                        });
+                    });
+                }
+            });
+            totalPlayableLessons = orderedPlayableLessons.length;
+        }
+
+        // RENDER DAN DIBUAT SECARA DINAMIS
+        function renderModules(filterText = "") {
+            modulesContainer.innerHTML = "";
+            const filterLower = filterText.toLowerCase().trim();
+
+            modulesData.forEach((modul, idx) => {
+                // Inisialisasi status buka tutup modul secara bawaan jika belum ada
+                if (accordionStates[modul.id] === undefined) {
+                    accordionStates[modul.id] = (idx === 0 || idx === 1); // Buka modul 1 & 2 secara bawaan
+                }
+
+                const isOpen = accordionStates[modul.id];
+
+                // Cek apakah modul ini adalah eksternal link (Modul 4 & 5)
+                if (modul.isExternal) {
+                    // Filter pencarian
+                    if (filterLower !== "" && !modul.title.toLowerCase().includes(filterLower)) return;
+
+                    const extCard = document.createElement("div");
+                    extCard.className = "bg-slate-900/60 hover:bg-slate-900 border border-slate-800/80 hover:border-brand-500/50 rounded-xl p-4 transition-all duration-300 shadow-sm";
+                    extCard.innerHTML = `
+                        <div class="flex items-start justify-between gap-2 mb-2">
+                            <span class="text-[10px] text-brand-400 font-bold tracking-widest uppercase">E-Drive Access</span>
+                            <i data-lucide="folder-symlink" class="w-4 h-4 text-brand-400"></i>
+                        </div>
+                        <h4 class="font-extrabold text-xs text-slate-100 tracking-tight leading-relaxed mb-3">${modul.title}</h4>
+                        <a href="${modul.url}" target="_blank" class="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold text-center text-[11px] py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 transition duration-300">
+                            <span>Buka Folder Kamus</span>
+                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        </a>
+                    `;
+                    modulesContainer.appendChild(extCard);
+                    return;
+                }
+
+                // Hitung jumlah item total dan yang selesai di modul ini
+                let totalItemsInModul = 0;
+                let completedItemsInModul = 0;
+
+                if (modul.items) {
+                    totalItemsInModul = modul.items.length;
+                    completedItemsInModul = modul.items.filter(i => completedLessons.includes(i.id)).length;
+                } else if (modul.subsections) {
+                    modul.subsections.forEach(s => {
+                        totalItemsInModul += s.items.length;
+                        completedItemsInModul += s.items.filter(i => completedLessons.includes(i.id)).length;
+                    });
+                }
+
+                const percentageModul = totalItemsInModul > 0 ? Math.round((completedItemsInModul / totalItemsInModul) * 100) : 0;
+
+                // Membuka modul otomatis jika ada item di dalamnya yang cocok dengan query filter pencarian
+                let hasFilteredMatch = false;
+                if (filterLower !== "") {
+                    if (modul.items) {
+                        hasFilteredMatch = modul.items.some(i => i.title.toLowerCase().includes(filterLower));
+                    } else if (modul.subsections) {
+                        hasFilteredMatch = modul.subsections.some(s => s.items.some(i => i.title.toLowerCase().includes(filterLower)));
+                    }
+                    if (hasFilteredMatch) {
+                        accordionStates[modul.id] = true;
+                    }
+                }
+
+                // Render Elemen Utama Modul (Accordion)
+                const modulDiv = document.createElement("div");
+                modulDiv.className = "bg-slate-900 border border-slate-800/80 rounded-xl overflow-hidden transition-all duration-300";
+                
+                // Header Modul
+                const headerDiv = document.createElement("div");
+                headerDiv.className = `p-3.5 flex items-center justify-between cursor-pointer select-none transition duration-200 ${isOpen ? 'bg-slate-900/50' : 'bg-slate-900 hover:bg-slate-800/60'}`;
+                headerDiv.innerHTML = `
+                    <div class="flex-1 min-w-0 pr-2">
+                        <h3 class="font-extrabold text-xs text-slate-100 truncate">${modul.title}</h3>
+                        <div class="flex items-center gap-2 mt-1">
+                            <div class="w-16 bg-slate-950 h-1 rounded-full overflow-hidden">
+                                <div class="bg-brand-500 h-full" style="width: ${percentageModul}%"></div>
+                            </div>
+                            <span class="text-[9px] text-slate-400 font-semibold">${completedItemsInModul}/${totalItemsInModul} Selesai</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1.5 flex-shrink-0">
+                        ${percentageModul === 100 ? '<i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>' : ''}
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}"></i>
+                    </div>
+                `;
+
+                headerDiv.addEventListener("click", () => {
+                    accordionStates[modul.id] = !accordionStates[modul.id];
+                    saveToStorage("accordion_states", accordionStates);
+                    renderModules(filterText);
+                });
+
+                modulDiv.appendChild(headerDiv);
+
+                // Konten Modul (Jika Statusnya Terbuka/Expanded)
+                if (accordionStates[modul.id]) {
+                    const contentDiv = document.createElement("div");
+                    contentDiv.className = "border-t border-slate-950 bg-slate-950/40 p-2.5 space-y-2";
+
+                    // Kasus 1: Modul biasa yang langsung berisi daftar items (Modul 1 & Modul 2)
+                    if (modul.items) {
+                        const itemsList = document.createElement("div");
+                        itemsList.className = "space-y-1";
+
+                        modul.items.forEach(item => {
+                            if (filterLower !== "" && !item.title.toLowerCase().includes(filterLower)) return;
+
+                            const isCurrent = item.id === currentLessonId;
+                            const isDone = completedLessons.includes(item.id);
+
+                            const itemButton = document.createElement("button");
+                            itemButton.className = `w-full text-left p-2.5 rounded-lg flex items-center justify-between text-xs transition duration-200 ${isCurrent ? 'bg-brand-500/10 text-brand-300 border border-brand-500/30' : 'text-slate-400 hover:text-slate-100 hover:bg-slate-900 border border-transparent'}`;
+                            
+                            itemButton.innerHTML = `
+                                <div class="flex items-center gap-2.5 min-w-0">
+                                    <div class="flex-shrink-0">
+                                        ${isDone 
+                                            ? '<i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i>' 
+                                            : `<i data-lucide="play-circle" class="w-3.5 h-3.5 ${isCurrent ? 'text-brand-400' : 'text-slate-500'}"></i>`}
+                                    </div>
+                                    <span class="truncate font-medium">${item.title}</span>
+                                </div>
+                                ${isCurrent ? '<span class="w-1.5 h-1.5 rounded-full bg-brand-400 shadow-lg animate-pulse ml-2"></span>' : ''}
+                            `;
+
+                            itemButton.addEventListener("click", () => {
+                                selectLesson(item.id);
+                                // Tutup drawer menu mobile setelah diklik
+                                if (window.innerWidth < 1024) toggleMobileSidebar();
+                            });
+
+                            itemsList.appendChild(itemButton);
+                        });
+
+                        contentDiv.appendChild(itemsList);
+                    } 
+                    
+                    // Kasus 2: Modul dengan nested sub-sections (Modul 3)
+                    else if (modul.subsections) {
+                        modul.subsections.forEach((sub, subIdx) => {
+                            const subId = `${modul.id}-sub-${subIdx}`;
+                            
+                            if (accordionStates[subId] === undefined) {
+                                accordionStates[subId] = false; // Bawaannya tertutup untuk submodul biar rapi
+                            }
+
+                            // Buka submodul jika item di dalamnya sedang aktif
+                            const isSubActive = sub.items.some(item => item.id === currentLessonId);
+                            if (isSubActive) {
+                                accordionStates[subId] = true;
+                            }
+
+                            // Filter materi submodul
+                            let hasSubMatch = true;
+                            if (filterLower !== "") {
+                                hasSubMatch = sub.title.toLowerCase().includes(filterLower) || sub.items.some(i => i.title.toLowerCase().includes(filterLower));
+                            }
+                            if (!hasSubMatch) return;
+
+                            const subDiv = document.createElement("div");
+                            subDiv.className = "border border-slate-900/60 rounded-lg overflow-hidden";
+
+                            const isSubOpen = accordionStates[subId];
+
+                            const subHeader = document.createElement("div");
+                            subHeader.className = `p-2 px-3 flex items-center justify-between cursor-pointer select-none text-[11px] font-bold ${isSubOpen ? 'bg-slate-900/80 text-brand-400' : 'bg-slate-900/40 text-slate-400 hover:text-slate-200'}`;
+                            subHeader.innerHTML = `
+                                <div class="flex items-center gap-2 min-w-0">
+                                    <i data-lucide="folder" class="w-3.5 h-3.5 flex-shrink-0"></i>
+                                    <span class="truncate">${sub.title}</span>
+                                </div>
+                                <i data-lucide="chevron-down" class="w-3 h-3 transition-transform duration-300 ${isSubOpen ? 'rotate-180' : ''}"></i>
+                            `;
+
+                            subHeader.addEventListener("click", () => {
+                                accordionStates[subId] = !accordionStates[subId];
+                                saveToStorage("accordion_states", accordionStates);
+                                renderModules(filterText);
+                            });
+
+                            subDiv.appendChild(subHeader);
+
+                            if (isSubOpen) {
+                                const subItemsList = document.createElement("div");
+                                subItemsList.className = "p-1 bg-slate-950/20 space-y-0.5 border-t border-slate-900";
+
+                                sub.items.forEach(item => {
+                                    if (filterLower !== "" && !item.title.toLowerCase().includes(filterLower)) return;
+
+                                    const isCurrent = item.id === currentLessonId;
+                                    const isDone = completedLessons.includes(item.id);
+
+                                    const itemButton = document.createElement("button");
+                                    itemButton.className = `w-full text-left p-2 rounded-md flex items-center justify-between text-xs transition duration-200 ${isCurrent ? 'bg-brand-500/10 text-brand-300 border border-brand-500/30' : 'text-slate-400 hover:text-slate-100 hover:bg-slate-900 border border-transparent'}`;
+                                    
+                                    itemButton.innerHTML = `
+                                        <div class="flex items-center gap-2 min-w-0">
+                                            <div class="flex-shrink-0">
+                                                ${isDone 
+                                                    ? '<i data-lucide="check" class="w-3 h-3 text-emerald-400"></i>' 
+                                                    : `<i data-lucide="play-circle" class="w-3 h-3 ${isCurrent ? 'text-brand-400' : 'text-slate-500'}"></i>`}
+                                            </div>
+                                            <span class="truncate font-medium">${item.title}</span>
+                                        </div>
+                                        ${isCurrent ? '<span class="w-1.5 h-1.5 rounded-full bg-brand-400 animate-pulse ml-2"></span>' : ''}
+                                    `;
+
+                                    itemButton.addEventListener("click", () => {
+                                        selectLesson(item.id);
+                                        if (window.innerWidth < 1024) toggleMobileSidebar();
+                                    });
+
+                                    subItemsList.appendChild(itemButton);
+                                });
+
+                                subDiv.appendChild(subItemsList);
+                            }
+
+                            contentDiv.appendChild(subDiv);
+                        });
+                    }
+
+                    modulDiv.appendChild(contentDiv);
+                }
+
+                modulesContainer.appendChild(modulDiv);
+            });
+
+            // Re-render semua lucide icons agar berfungsi setelah DOM berubah
+            lucide.createIcons();
+        }
+
+        // AKSI MEMILIH DAN MEMUTAR MATERI VIDEO
+        function selectLesson(id) {
+            const lesson = orderedPlayableLessons.find(l => l.id === id);
+            if (!lesson) return;
+
+            currentLessonId = id;
+            localStorage.setItem("last_active_lesson_id", id);
+
+            // Ganti URL Iframe & Metadata
+            videoIframe.src = lesson.url;
+            activeVideoTitle.textContent = lesson.title;
+            activeCategory.textContent = lesson.moduleTitle;
+            activeCategoryIndicator.textContent = lesson.title;
+
+            // Load saved notes jika ada
+            if (notesData[id]) {
+                textareaNotes.value = notesData[id];
+                notesStatus.textContent = "Catatan tersimpan ditemukan";
+            } else {
+                textareaNotes.value = "";
+                notesStatus.textContent = "Belum ada catatan";
+            }
+
+            // Ganti status label button Selesai & Lanjutkan
+            updateCompleteButtonUI(id);
+
+            // Re-render modul agar visual aktif bergeser
+            renderModules(searchInput.value);
+
+            // Scroll otomatis video ke atas pada mobile view
+            if (window.innerWidth < 1024) {
+                window.scrollTo({ top: 120, behavior: 'smooth' });
+            }
+        }
+
+        // UPDATE BUTTON SELESAI & LANJUTKAN
+        function updateCompleteButtonUI(id) {
+            const isDone = completedLessons.includes(id);
+            if (isDone) {
+                btnComplete.className = "w-full md:w-auto bg-slate-800 hover:bg-slate-700 text-emerald-400 border border-emerald-500/30 font-bold text-xs px-6 py-3.5 rounded-xl flex items-center justify-center gap-2 transition duration-300 transform active:scale-95";
+                btnCompleteText.textContent = "Sudah Selesai (Nonton Lagi)";
+            } else {
+                btnComplete.className = "w-full md:w-auto bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold text-xs px-6 py-3.5 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-brand-600/25 transition duration-300 transform active:scale-95";
+                btnCompleteText.textContent = "Tandai Selesai & Lanjutkan";
+            }
+        }
+
+        // TANGANI LOGIKA MARK COMPLETE DAN OTOMATIS BERPINDAH KE MATERI BERIKUTNYA
+        function handleCompleteAndContinue() {
+            if (!currentLessonId) return;
+
+            // Tandai selesai
+            if (!completedLessons.includes(currentLessonId)) {
+                completedLessons.push(currentLessonId);
+                saveToStorage("completed_lessons", completedLessons);
+                updateProgress();
+            }
+
+            // Cari materi berikutnya di index datar linier
+            const currentIndex = orderedPlayableLessons.findIndex(l => l.id === currentLessonId);
+            const nextIndex = currentIndex + 1;
+
+            if (nextIndex < orderedPlayableLessons.length) {
+                // Mainkan materi berikutnya
+                const nextLesson = orderedPlayableLessons[nextIndex];
+                
+                // Pastikan modul pembungkusnya terbuka otomatis agar navigasi selaras
+                Object.keys(accordionStates).forEach(key => {
+                    // Cek korelasi id modul dengan id materi berikutnya
+                    if (nextLesson.id.startsWith("m1") && key === "m1") accordionStates[key] = true;
+                    if (nextLesson.id.startsWith("m2") && key === "m2") accordionStates[key] = true;
+                    if (nextLesson.id.startsWith("m3") && key === "m3") {
+                        accordionStates[key] = true;
+                        // Buka sub-section spesifik di modul 3
+                        if (nextLesson.id.startsWith("m3-t")) accordionStates["m3-sub-0"] = true;
+                        if (nextLesson.id.startsWith("m3-n")) accordionStates["m3-sub-1"] = true;
+                        if (nextLesson.id.startsWith("m3-f")) accordionStates["m3-sub-2"] = true;
+                        if (nextLesson.id.startsWith("m3-as")) accordionStates["m3-sub-3"] = true;
+                        if (nextLesson.id.startsWith("m3-ot")) accordionStates["m3-sub-4"] = true;
+                        if (nextLesson.id.startsWith("m3-dt")) accordionStates["m3-sub-5"] = true;
+                    }
+                });
+                saveToStorage("accordion_states", accordionStates);
+
+                selectLesson(nextLesson.id);
+            } else {
+                // Semua video telah selesai dipelajari
+                showCompletionCelebration();
+            }
+        }
+
+        // UPDATE PERSENTASE PROGRESS BAR DI HEADER
+        function updateProgress() {
+            if (totalPlayableLessons === 0) return;
+
+            const percentage = Math.round((completedLessons.length / totalPlayableLessons) * 100);
+            
+            progressBar.style.width = `${percentage}%`;
+            progressPercent.textContent = `${percentage}% Selesai`;
+            progressCount.textContent = `${completedLessons.length} / ${totalPlayableLessons} Materi Dipelajari`;
+
+            // Custom badge berdasarkan persentase
+            if (percentage === 100) {
+                milestoneBadge.textContent = "🎓 Grandmaster Crypto!";
+                milestoneBadge.className = "font-bold text-emerald-400";
+            } else if (percentage >= 75) {
+                milestoneBadge.textContent = "💎 Hampir Lulus";
+                milestoneBadge.className = "font-semibold text-cyan-400";
+            } else if (percentage >= 50) {
+                milestoneBadge.textContent = "🚀 Konsisten Belajar";
+                milestoneBadge.className = "font-semibold text-indigo-400";
+            } else if (percentage >= 25) {
+                milestoneBadge.textContent = "⚡ Melangkah Maju";
+                milestoneBadge.className = "font-semibold text-brand-400";
+            } else if (percentage > 0) {
+                milestoneBadge.textContent = "📈 Memulai Perjalanan";
+                milestoneBadge.className = "font-semibold text-slate-300";
+            } else {
+                milestoneBadge.textContent = "Mulai Belajar";
+                milestoneBadge.className = "font-semibold text-slate-500";
+            }
+        }
+
+        // TAMPILKAN POPUP NOTIFIKASI KETIKA LULUS 100%
+        function showCompletionCelebration() {
+            // Membuat modal custom agar estetik dan terhindar dari alert browser
+            const modal = document.createElement("div");
+            modal.className = "fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md";
+            modal.innerHTML = `
+                <div class="bg-slate-900 border border-brand-500/40 rounded-2xl p-6 md:p-8 max-w-md w-full text-center shadow-2xl glow-violet animate-bounce-short">
+                    <div class="w-16 h-16 bg-gradient-to-tr from-brand-500 to-amber-400 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-brand-500/20">
+                        <i data-lucide="award" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-black text-slate-50 mb-2">Selamat! Anda Lulus!</h3>
+                    <p class="text-xs md:text-sm text-slate-400 leading-relaxed mb-6">
+                        Anda telah menyelesaikan seluruh modul dan materi pada <strong class="text-brand-300">Masterclass Crypto - Kelas 1</strong>. Anda siap untuk mempraktikkan keahlian ini di market nyata!
+                    </p>
+                    <button id="btn-close-modal" class="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-3 px-6 rounded-xl transition duration-300">
+                        Luar Biasa, Terima Kasih!
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            lucide.createIcons();
+
+            document.getElementById("btn-close-modal").addEventListener("click", () => {
+                modal.remove();
+            });
+        }
+
+        // FITUR NOTES AUTOSAVE BERBASIS TYPING DEBOUNCE
+        let notesTimeout;
+        textareaNotes.addEventListener("input", () => {
+            if (!currentLessonId) return;
+
+            notesStatus.textContent = "Sedang mengetik...";
+            clearTimeout(notesTimeout);
+
+            notesTimeout = setTimeout(() => {
+                notesData[currentLessonId] = textareaNotes.value;
+                saveToStorage("lessons_notes", notesData);
+                notesStatus.textContent = "Perubahan disimpan";
+            }, 1000);
+        });
+
+        // HAPUS CATATAN DI CURRENT LESSON
+        btnClearNotes.addEventListener("click", () => {
+            if (!currentLessonId) return;
+            if (confirm("Apakah Anda yakin ingin menghapus semua catatan untuk materi ini?")) {
+                delete notesData[currentLessonId];
+                saveToStorage("lessons_notes", notesData);
+                textareaNotes.value = "";
+                notesStatus.textContent = "Catatan telah dihapus";
+            }
+        });
+
+        // MENU MOBILE DRAW-IN SIDEBAR
+        function toggleMobileSidebar() {
+            const isHidden = sidebar.classList.contains("hidden");
+            if (isHidden) {
+                sidebar.classList.remove("hidden");
+                sidebar.classList.add("block", "w-full", "left-0", "right-0", "bg-slate-950", "z-40");
+                mobileSidebarToggle.innerHTML = `
+                    <i data-lucide="x" class="w-4 h-4 text-brand-400"></i>
+                    <span>Tutup Kurikulum</span>
+                `;
+            } else {
+                sidebar.classList.add("hidden");
+                sidebar.classList.remove("block", "w-full", "left-0", "right-0", "bg-slate-950", "z-40");
+                mobileSidebarToggle.innerHTML = `
+                    <i data-lucide="menu" class="w-4 h-4 text-brand-400"></i>
+                    <span>Daftar Modul & Materi</span>
+                `;
+            }
+            lucide.createIcons();
+        }
+
+        // PENCARIAN LIVE FILTER DI SIDEBAR
+        searchInput.addEventListener("input", (e) => {
+            renderModules(e.target.value);
+        });
+
+        // DAFTAR EVENT LISTENERS UTAMA
+        function setupEventListeners() {
+            btnComplete.addEventListener("click", handleCompleteAndContinue);
+            mobileSidebarToggle.addEventListener("click", toggleMobileSidebar);
+        }
+
+        // EXECUTE PADA SAAT WINDOW SELESAI LOAD
+        window.onload = function() {
+            initApp();
+        };
+    </script>
+</body>
+</html>
